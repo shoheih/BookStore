@@ -3,21 +3,40 @@ package com.example.bitamirshafiee.bookstoreskeleton
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v7.widget.RecyclerView
+import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- *
- */
 class FragmentThree : Fragment() {
+
+    private var fictionList: MutableList<Int> = mutableListOf(
+        R.drawable.fiction_one,
+        R.drawable.fiction_two,
+        R.drawable.fiction_three,
+        R.drawable.fiction_four,
+        R.drawable.fiction_five,
+        R.drawable.fiction_six,
+        R.drawable.fiction_seven,
+        R.drawable.fiction_eight,
+        R.drawable.fiction_nine,
+        R.drawable.fiction_ten,
+        R.drawable.fiction_one,
+        R.drawable.fiction_two,
+        R.drawable.fiction_three,
+        R.drawable.fiction_four,
+        R.drawable.fiction_five,
+        R.drawable.fiction_six,
+        R.drawable.fiction_seven,
+        R.drawable.fiction_eight,
+        R.drawable.fiction_nine,
+        R.drawable.fiction_ten
+    )
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: RecyclerViewAdapter
+    private lateinit var layout: StaggeredGridLayoutManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -25,6 +44,15 @@ class FragmentThree : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_three, container, false)
+
+        recyclerView = view.findViewById(R.id.recycler_view)
+
+        adapter = RecyclerViewAdapter(fictionList)
+
+        layout = StaggeredGridLayoutManager(3, StaggeredGridLayoutManager.VERTICAL)
+
+        recyclerView.adapter = adapter
+        recyclerView.layoutManager = layout
 
         return view
     }
